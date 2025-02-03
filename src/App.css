@@ -223,3 +223,6 @@ body {
   background-size: 300% 300%;
   animation:borderMove 3s linear inflate;
 }
+.bg-\[radial-gradient\(circle_at_bottom,_var\(--tw-gradient-stops\)\)\] {
+  background-image: radial-gradient(circle at bottom, var(--tw-gradient-stops));
+}

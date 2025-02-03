@@ -11,6 +11,7 @@ import Allposts from './pages/Allposts'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
  
+ 
 function App() {
    
 
@@ -27,6 +28,7 @@ function App() {
           <Route path='/add-post' element={<AddPost/>}></Route>
           <Route path='/all-posts' element={<Allposts/>}></Route>
         </Routes>
+        
     </div>
   )
 }
