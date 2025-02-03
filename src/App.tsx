@@ -10,13 +10,13 @@ import AddPost from './pages/AddPost'
 import Allposts from './pages/Allposts'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
-import Header from './components/Header';
+ 
 function App() {
    
 
   return (
-    <div>
-      <Header/>
+    <div className='px-4 sm:px-[5vw] md:p-[7vw] lg-px[9vw]'>
+       
       <ToastContainer/>
         <Routes>
           <Route path='/' element={<Home/>}></Route>

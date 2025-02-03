@@ -1,5 +1,6 @@
-import logo from './Quill_logo.png'
+import logo from './logo.png'
 
 export const assets={
-    logo
+    logo,
+    
 }
