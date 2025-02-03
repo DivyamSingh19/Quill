@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import SplashScreen from '../components/SplashScreen'
 import Header from '../components/Header'
+import ExpandingSearch from '../components/ExpandingSearch'
 
 const Home = () => {
   const [loading,setLoading] = useState(true)
@@ -11,14 +12,14 @@ const Home = () => {
     return () => clearTimeout(timer);
   },[])
   return (
-    <div className=''>
+    <div className='w-screen min-h-screen absolute top-0 left-0 bg-[radial-gradient(500px_circle_at_bottom,_var(--tw-gradient-stops))] from-gradient via-mid to-background'>
       {
         loading ? (
           <SplashScreen onAnimationEnd={function () : void{throw new Error('Function not implemented.')}}/>
         ):(
           <div>
-          <Header/>
           
+          <ExpandingSearch/>
           </div>
         )
       }
