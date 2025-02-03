@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import logo from '../assets/assets'
+import { Link , NavLink } from 'react-router-dom'
+
 const Header = () => {
+  const [visible,setVisible] = useState(false);
+  
   return (
-    <div className='absolute top-0 left-0 w-full pt-8 mx-auto bg-black'>
+    <div className='flex items-center justify-between py-5 font-medium absolute top-0 left-0 w-full pt-15 mx-auto bg-white'>
       <div className='bg-pink pt-2'>
 
       </div>
