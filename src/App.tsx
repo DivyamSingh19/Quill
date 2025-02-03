@@ -10,6 +10,7 @@ import AddPost from './pages/AddPost'
 import Allposts from './pages/Allposts'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
+import ResetPassword from './pages/ResetPassword';
  
  
 function App() {
@@ -27,6 +28,7 @@ function App() {
           <Route path='/signup' element={<Signup/>}></Route>
           <Route path='/add-post' element={<AddPost/>}></Route>
           <Route path='/all-posts' element={<Allposts/>}></Route>
+          <Route path='/reset-password' element={<ResetPassword/>}></Route>
         </Routes>
         
     </div>

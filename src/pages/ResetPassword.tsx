@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { LockClosedIcon, EnvelopeIcon, UserIcon } from "@heroicons/react/24/solid";
 import { assets } from "../assets/assets";
 
-const Login = () => {
+const ResetPassword = () => {
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
@@ -24,6 +24,17 @@ const Login = () => {
             <h2 className="text-white text-2xl font-medium mb-6">Welcome Back!</h2>
             
             <form className="space-y-4">
+            <div>
+                <label className="text-sm text-gray-400">Name</label>
+                <div className="relative mt-1">
+                  <input
+                    type="text"
+                    className="w-full bg-transparent border border-gray-800 rounded p-3 text-white focus:outline-none focus:border-emerald-500"
+                    placeholder="Enter your Name"
+                  />
+                  <EnvelopeIcon className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500" />
+                </div>
+              </div>
               <div>
                 <label className="text-sm text-gray-400">Email Address</label>
                 <div className="relative mt-1">
@@ -56,39 +67,14 @@ const Login = () => {
                 <a href="#" className="text-sm text-emerald-500 hover:text-emerald-400">Forgot Password?</a>
               </div>
 
-              <button
-                type="submit"
-                className="w-full bg-emerald-500 text-white rounded p-3 hover:bg-emerald-600 transition-colors"
-              >
-                LOGIN
-              </button>
+             
+              
 
-              <div className="flex items-center my-4">
-                <div className="flex-grow border-t border-gray-800"></div>
-                <span className="px-4 text-sm text-gray-500">OR</span>
-                <div className="flex-grow border-t border-gray-800"></div>
-              </div>
-
-              <button
-                type="button"
-                className="w-full border border-gray-800 text-white rounded p-3 hover:bg-gray-900 transition-colors"
-              >
-                Signup with Google
-              </button>
-              <button
-                type="button"
-                className="w-full border border-gray-800 text-white rounded p-3 hover:bg-gray-900 transition-colors"
-              >
-                Signup with Github
-              </button>
+              
+           
             </form>
 
-            <p className="mt-6 text-center text-sm text-gray-400">
-              Not on Quill yet?{" "}
-              <a href="#" className="text-emerald-500 hover:text-emerald-400">
-                Sign up
-              </a>
-            </p>
+            
           </div>
         </div>
       </div>
@@ -96,4 +82,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default ResetPassword;

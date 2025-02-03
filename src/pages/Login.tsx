@@ -1,83 +1,111 @@
-import { useEffect } from "react"
+import { useEffect } from "react";
 import { LockClosedIcon, EnvelopeIcon, UserIcon } from "@heroicons/react/24/solid";
-import {FcGoogle } from 'react-icons/fc'
-import {FaGithub} from 'react-icons/fa'
- 
+import { assets } from "../assets/assets";
 
-const Signup = () => {
-     
-    useEffect(() => {
-         
-        document.body.style.overflow = "hidden";
-    
-        return () => {
-           
-          document.body.style.overflow = "auto";
-        };
-      }, []);   
+const Login = () => {
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, []);
 
   return (
-    <div className="absolute top-0 left-0 flex min-h-screen w-screen justify-center items-center bg-[radial-gradient(500px_circle_at_bottom,_var(--tw-gradient-stops))] from-gradient via-mid to-background">
-      <div className=" backdrop-blur-md md:max-w-[1000px] sm:max-w-[7000px] text-center p-10 rounded-xl md:border border-white shadow-2xl">
-        <h2 className="text-white text-3xl font-bold mb-2 ">
-          Create an account
-        </h2>
-        <p className="mb-5  text-sm">
-          Already have an account?{" "}
-          <a href="#" className="text-blue-400 hover:text-blue-500 underline">
-            Login
-          </a>{" "}
-        </p>
+    <div className="w-screen h-screen absolute left-0 top-0  ">
+      <div className="flex w-screen h-screen absolute left-0 top-0">
+        {/* Left side with logo */}
+        <div className="hidden md:flex md:w-1/2  items-center justify-center ">
+          <img src={assets.banner} alt="" />
+        </div>
 
-        <form method="#" action="#" className="flex flex-col">
+        {/* Right side with login form */}
+        <div className="w-full md:w-1/2 p-8 flex items-center justify-center">
+          <div className="max-w-sm mx-auto">
+            <h2 className="text-white text-2xl font-medium mb-6">Welcome Back!</h2>
+            
+            <form className="space-y-4">
+            <div>
+                <label className="text-sm text-gray-400">Name</label>
+                <div className="relative mt-1">
+                  <input
+                    type="text"
+                    className="w-full bg-transparent border border-gray-800 rounded p-3 text-white focus:outline-none focus:border-emerald-500"
+                    placeholder="Enter your Name"
+                  />
+                  <EnvelopeIcon className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500" />
+                </div>
+              </div>
+              <div>
+                <label className="text-sm text-gray-400">Email Address</label>
+                <div className="relative mt-1">
+                  <input
+                    type="email"
+                    className="w-full bg-transparent border border-gray-800 rounded p-3 text-white focus:outline-none focus:border-emerald-500"
+                    placeholder="Enter your email"
+                  />
+                  <EnvelopeIcon className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500" />
+                </div>
+              </div>
 
-           
+              <div>
+                <label className="text-sm text-gray-400">Password</label>
+                <div className="relative mt-1">
+                  <input
+                    type="password"
+                    className="w-full bg-transparent border border-gray-800 rounded p-3 text-white focus:outline-none focus:border-emerald-500"
+                    placeholder="Enter your password"
+                  />
+                  <LockClosedIcon className="absolute right-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500" />
+                </div>
+              </div>
 
-          <div className="relative">
-            <EnvelopeIcon className="w-6 h-6 absolute left-3 top-1/3 transform -translate-y-1/2  " />
-            <input
-              type="email"
-              placeholder="Email"
-              className="p-3 pl-15 mb-4 w-full rounded-md  focus:outline-none focus:ring-2 focus:ring-blue-400 border border-gray-400 "
-              required
-            />
-          </div>
-          
+              <div className="flex items-center justify-between">
+                <label className="flex items-center justify-between">
+                  <input type="checkbox" className="rounded border-gray-800 text-emerald-500 focus:ring-emerald-500" />
+                  <span className="ml-2 text-sm text-gray-400">Remember me{" "}</span>
+                </label>
+                <a href="#" className="text-sm text-emerald-500 hover:text-emerald-400">Forgot Password?</a>
+              </div>
 
-          <div className="relative">
-            <LockClosedIcon className="w-6 h-6 absolute left-3 top-1/3 transform -translate-y-1/2 " />
-            <input
-              type="password"
-              placeholder="Password"
-              className="p-3 pl-15  mb-4 w-full rounded-md  focus:outline-none focus:ring-2 focus:ring-blue-400 border border-gray-400 "
-              required
-            />
-          </div>
-          
+              <button
+                type="submit"
 
-          
-          <div className=" w-full relative">
-            <FcGoogle className="w-6 h-6 absolute left-3 top-1/3 transform -translate-y-1/2 " />
-            <button
-              
-              className="p-3 pl-15  mb-4 w-full rounded-md  focus:outline-none focus:ring-2 focus:ring-blue-400 border border-gray-400 "> Login With Google
-              
-           </button>
+                className="w-full bg-emerald-500 text-white rounded p-3 hover:bg-emerald-600 transition-colors"
+              >
+                LOGIN
+              </button>
+
+              <div className="flex items-center my-4">
+                <div className="flex-grow border-t border-gray-800"></div>
+                <span className="px-4 text-sm text-gray-500">OR</span>
+                <div className="flex-grow border-t border-gray-800"></div>
+              </div>
+
+              <button
+                type="button"
+                className="w-full border border-gray-800 text-white rounded p-3 hover:bg-gray-900 transition-colors"
+              >
+                Login with Google
+              </button>
+              <button
+                type="button"
+                className="w-full border border-gray-800 text-white rounded p-3 hover:bg-gray-900 transition-colors"
+              >
+                Login with Github
+              </button>
+            </form>
+
+            <p className="mt-6 text-center text-sm text-gray-400">
+              Not on Quill yet?{" "}
+              <a href="#" className="text-emerald-500 hover:text-emerald-400">
+                Sign up
+              </a>
+            </p>
           </div>
-          <div className="relative">
-            <FaGithub className="w-6 h-6 absolute left-3 top-1/3 transform -translate-y-1/2 " />
-            <button className="p-3 pl-15  mb-4 w-full rounded-md  focus:outline-none focus:ring-2 focus:ring-blue-400 border border-gray-400 "> Login With Github</button>
-          </div>
-          <div className="flex items-center justify-center"> 
-          <button className="  mt-4 p-3 w-1/3 cursor-pointer font-semibold bg-gradient-to-r from-blue-500 to-blue-700 hover:scale-105 hover:brightness-110 rounded-lg shadow-lg transition duration-300 ">
-            Login
-          </button>
-          </div>
-        </form>
+        </div>
       </div>
-       
     </div>
   );
-}
+};
 
-export default Signup
+export default Login;
