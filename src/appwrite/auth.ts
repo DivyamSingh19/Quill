@@ -1,5 +1,5 @@
 import conf from "../conf/conf";
-import { Client, Account, ID } from "appwrite";
+import { Client, Account, ID ,Databases } from "appwrite";
 import { toast } from "react-toastify";
 
 interface User {
@@ -35,14 +35,14 @@ class AuthService {
             return userAccount;
         } catch (error) {
             console.log("Create account error:", error);
-            toast.error("User could not be created");
+            toast.error("User already exists");
             throw error;
         }
     }
 
     async login({ email, password }: User) {
         try {
-            const session = await this.account.createSession(email, password);
+            const session = await this.account.createEmailSession(email, password);
             toast.success("Login successful");
             return session;
         } catch (error) {
