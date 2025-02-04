@@ -7,9 +7,12 @@ import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import authService from "../appwrite/auth";
 import {login} from '../store/authSlice'
+import { FaGithub } from "react-icons/fa";
+import  {FcGoogle} from "react-icons/fc"
 
 
-const Login = () => {
+
+const Signup = () => {
   const navigate = useNavigate()
   const [errorp,setErrorp] = useState("")
   const dispatch = useDispatch()
@@ -122,20 +125,22 @@ const Login = () => {
                 type="button"
                 className="w-full border border-gray-800 text-white rounded p-3 hover:bg-gray-900 transition-colors"
               >
+               <FcGoogle size={24}/>
                 Signup with Google
               </button>
               <button
                 type="button"
                 className="w-full border border-gray-800 text-white rounded p-3 hover:bg-gray-900 transition-colors"
               >
+                <FaGithub size={24}/>
                 Signup with Github
               </button>
             </form>
 
             <p className="mt-6 text-center text-sm text-gray-400">
-              Not on Quill yet?{" "}
-              <a href="#" className="text-emerald-500 hover:text-emerald-400">
-                Sign up
+              Already on Quill?{" "}
+              <a href="/login" className="text-emerald-500 hover:text-emerald-400">
+                Login now
               </a>
             </p>
           </div>
@@ -145,4 +150,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;
