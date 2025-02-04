@@ -3,6 +3,7 @@ import SplashScreen from '../components/SplashScreen'
 import NewsletterBox from '../components/NewsLetter'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
+import Landing from '../components/Landing'
  
 
 const Home = () => {
@@ -21,6 +22,7 @@ const Home = () => {
         ):(
           <div>
           <Header/>
+          <Landing/>
           <NewsletterBox/>
           
           <Footer/>
