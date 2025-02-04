@@ -42,7 +42,7 @@ class AuthService {
 
     async login({ email, password }: User) {
         try {
-            const session = await this.account.createEmailSession(email, password);
+            const session = await this.account.createSession(email, password);
             toast.success("Login successful");
             return session;
         } catch (error) {
