@@ -14,9 +14,11 @@ const About = () => {
   const isSmallScreen = useMediaQuery({ maxWidth: 700 });
   useEffect(() => {
     if (!isSmallScreen) {
-      document.body.style.overflow = "hiddden";
+      document.body.style.overflowY = "auto";
+      document.body.style.overflowX = "hidden";
     } else {
-      document.body.style.overflow = "auto";
+      document.body.style.overflowY = "auto";
+      document.body.style.overflowX = "hidden";
     }
     return () => {
       document.body.style.overflow = "auto";
