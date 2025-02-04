@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import SplashScreen from '../components/SplashScreen'
+import NewsletterBox from '../components/NewsLetter'
+import Footer from '../components/Footer'
 import Header from '../components/Header'
-import ExpandingSearch from '../components/ExpandingSearch'
+ 
 
 const Home = () => {
   const [loading,setLoading] = useState(true)
@@ -18,8 +20,10 @@ const Home = () => {
           <SplashScreen onAnimationEnd={function () : void{throw new Error('Function not implemented.')}}/>
         ):(
           <div>
+          <Header/>
+          <NewsletterBox/>
           
-          <ExpandingSearch/>
+          <Footer/>
           </div>
         )
       }

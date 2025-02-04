@@ -17,7 +17,7 @@ function App() {
    
 
   return (
-    <div className='px-4 sm:px-[5vw] md:p-[7vw] lg-px[9vw]'>
+    <div className='px-4 sm:px-[5vw] md:p-[7vw] lg-px[9vw] bg-[radial-gradient(500px_circle_at_bottom,_var(--tw-gradient-stops))] from-gradient via-mid to-background'>
        
       <ToastContainer/>
         <Routes>
