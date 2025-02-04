@@ -29,7 +29,7 @@ const ExpandingSearch = () => {
 
   return (
     <>
-      {/* Search Icon in Navbar */}
+       
       <button
         onClick={() => setIsOpen(true)}
         className="p-2 hover:bg-gray-800 rounded-full transition-colors duration-200"
@@ -41,7 +41,7 @@ const ExpandingSearch = () => {
       <AnimatePresence>
         {isOpen && (
           <>
-            {/* Backdrop */}
+             
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -50,7 +50,7 @@ const ExpandingSearch = () => {
               onClick={() => setIsOpen(false)}
             />
 
-            {/* Search Container */}
+             
             <motion.div
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
@@ -59,7 +59,7 @@ const ExpandingSearch = () => {
               className="fixed inset-x-4 top-4 md:inset-x-auto md:left-1/2 md:-translate-x-1/2 md:w-full md:max-w-2xl z-50"
             >
               <div className="relative bg-blur border border-yellow-500 rounded-lg shadow-2xl">
-                {/* Search Input */}
+                 
                 <div className="flex items-center p-4">
                   <Search className="w-5 h-5 text-gray-400" />
                   <input
@@ -76,7 +76,7 @@ const ExpandingSearch = () => {
                   </button>
                 </div>
 
-                {/* Search Results Container */}
+                 
                 <div className="border-t border-yellow-500 max-h-[70vh] overflow-y-auto">
                   <div className="p-4 text-sm text-gray-400">
                     Start typing to search...
