@@ -7,13 +7,13 @@ const SplashScreen = ({ onAnimationEnd }:{ onAnimationEnd: () => void }) => {
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    // Progress bar animation
+     
     const progressInterval = setInterval(() => {
       setProgress(prev => {
         if (prev < 100) return prev + 1;
         return prev;
       });
-    }, 30); // Will take 3 seconds to reach 100%
+    }, 30);  
 
     const timer = setTimeout(() => {
       setIsClosing(true);
