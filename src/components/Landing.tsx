@@ -21,7 +21,7 @@ export const Landing = ({
 }: GoogleGeminiEffectProps) =>  {
   return (
     <div> 
-      <p className="text-2xl md:text-7xl font-normal pb-4 text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-100 to-neutral-300">
+      <p className="text-4xl md:text-7xl font-normal pb-4 text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-100 to-neutral-300">
          Transform your thoughts into <br/>  <span className="text-transparent bg-gradient-to-r from-blue-400 via-pink-600 to purple-500 bg-clip-text animate-gradient bg-[length:200%_200%] ">captivating stories</span>
       </p>
     <div className={cn("sticky w-screen absolute left-0 ", className)}>
