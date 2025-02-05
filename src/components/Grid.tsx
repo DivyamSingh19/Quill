@@ -27,7 +27,7 @@ const Card = ({ className = "" }) => {
 
 const GridLayout = () => {
   return (
-    <div className=" absolute top-150 md:top-230  left-0 pt-10 w-screen h-screen  text-white">
+    <div className=" absolute top-170 md:top-230  left-0  sm:pt-15 pt-10 w-screen h-screen  text-white">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
         {/* Left Grid - Genres */}
         <GridSection title="Explore top genres">
