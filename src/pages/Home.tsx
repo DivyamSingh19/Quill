@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 import SplashScreen from '../components/SplashScreen';
-
+import LatestBlogs from '../components/LatestBlogs';
 import GridLayout from '../components/Grid';
 import { Hero } from '../components/Hero';
 import usePreventZoom from '../components/PreventZoom';
+import NewsletterBox from '../components/NewsLetter';
+import Footer from '../components/Footer';
 
 const Home = () => {
   usePreventZoom();
@@ -19,7 +21,7 @@ const Home = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 3000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -36,8 +38,12 @@ const Home = () => {
           
           <Hero />
           <GridLayout/>
+          <LatestBlogs/>
+          <NewsletterBox/>
+           
         </div>
       )}
+       
     </div>
   );
 };
