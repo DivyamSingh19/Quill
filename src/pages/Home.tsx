@@ -3,11 +3,18 @@ import SplashScreen from '../components/SplashScreen'
 import NewsletterBox from '../components/NewsLetter'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
-import Landing from '../components/Landing'
+import {Landing as LandingComponent} from '../components/Landing'
+import GridLayout from '../components/Grid'
  
 
 const Home = () => {
   const [loading,setLoading] = useState(true)
+  useEffect(()=>{
+    document.body.style.overflowX="hidden"
+    return()=>(
+      document.body.style.overflowX="auto" 
+    )
+  })
   useEffect(()=>{
     const timer = setTimeout(()=>{
       setLoading(false);
@@ -15,17 +22,16 @@ const Home = () => {
     return () => clearTimeout(timer);
   },[])
   return (
-    <div className='w-screen min-h-screen absolute top-0 left-0 bg-[radial-gradient(500px_circle_at_bottom,_var(--tw-gradient-stops))] from-gradient via-mid to-background'>
+    <div className='absolute top-0 left-0 w-screen h-screen flex items-center justify-center '>
       {
         loading ? (
           <SplashScreen onAnimationEnd={function () : void{throw new Error('Function not implemented.')}}/>
         ):(
           <div>
-          <Header/>
-          <Landing/>
-          <NewsletterBox/>
+           
+          <LandingComponent pathLengths={[]}/>
+           
           
-          <Footer/>
           </div>
         )
       }
