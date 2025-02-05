@@ -1,67 +1,83 @@
-import { assets } from "../assets/assets";
-import { FaFacebook, FaTwitter, FaLinkedin, FaInstagram } from "react-icons/fa";
+import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="bg-blur relative bottom-0 left-0 text-gray-200 py-10 mt-40">
-      <div className="mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-10">
-        
-        <div>
-          <img src="" className="mb-5 w-32" alt="Company Logo" />
-          <p className="text-sm">
-            Your go-to platform for everything related to blogging. Share your
-            thoughts, explore insights, and grow your audience.
-          </p>
-        </div>
-
+    <div className="bottom-0 left-0 right-0 w-full  p-4 z-50">
+      <footer className="bg-black-900 rounded-lg shadow m-4 w-full">
+        <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
+          <div className="sm:flex sm:items-center sm:justify-between">
+            <a
+              href="#"
+              className="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse"
+            >
+              <img src="#" className="h-8" alt="Logo" />
+              <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
+                TechNova
+              </span>
+            </a>
+            <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-200 sm:mb-0 dark:text-gray-400">
+              <li>
+                <a href="#" className="hover:text-white me-4 md:me-6">
+                  About
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-white  me-4 md:me-6">
+                  Privacy Policy
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-white  me-4 md:me-6">
+                  Licensing
+                </a>
+              </li>
+              <li>
+                <a href="#" className="hover:text-white">
+                  Contact 
+                </a>
+              </li>
+            </ul>
+          </div>
          
-        <div>
-          <h2 className="text-lg font-semibold mb-4">Company</h2>
-          <ul className="space-y-2">
-            <li><a href="/about" className="hover:text-white">About Us</a></li>
-            <li><a href="#" className="hover:text-white">Careers</a></li>
-            <li><a href="/cnotact" className="hover:text-white">Contact</a></li>
-            <li><a href="/all-posts" className="hover:text-white">Blog</a></li>
-          </ul>
-        </div>
-
-       
-        <div>
-          <h2 className="text-lg font-semibold mb-4">Support</h2>
-          <ul className="space-y-2">
-            <li><a href="/contact" className="hover:text-white">Help Center</a></li>
-            <li><a href="/about" className="hover:text-white">Privacy Policy</a></li>
-            <li><a href="/about" className="hover:text-white">Terms of Service</a></li>
-            <li><a href="/about" className="hover:text-white">FAQs</a></li>
-          </ul>
-        </div>
-
-        
-        <div>
-          <h2 className="text-lg font-semibold mb-4">Follow Us</h2>
-          <div className="flex gap-4">
-            <a href="/" className="text-gray-400 hover:text-white text-xl">
-              <FaFacebook />
+          <div className="mt-4 mb-4">
+            <a
+              href="https://www.github.com/your-repo"
+              className="text-white hover:text-gray-400 mx-2"
+            >
+              GitHub
             </a>
-            <a href="/" className="text-gray-400 hover:text-white text-xl">
-              <FaTwitter />
+            <a
+              href="https://www.linkedin.com/in/your-profile"
+              className="text-white hover:text-gray-400 mx-2"
+            >
+              LinkedIn
             </a>
-            <a href="/" className="text-gray-400 hover:text-white text-xl">
-              <FaLinkedin />
+            <a
+              href="https://x.com/your-profile"
+              className="text-white hover:text-gray-400 mx-2"
+            >
+              Twitter
             </a>
-            <a href="/" className="text-gray-400 hover:text-white text-xl">
-              <FaInstagram />
+            <a
+              href="https://instagram.com/your-profile"
+              className="text-white hover:text-gray-400 mx-2"
+            >
+              Instagram
             </a>
           </div>
+          <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
+            © {new Date().getFullYear()} {""}
+            <a href="#" className="hover:text-white">
+              TechNova 
+            </a>
+            . All Rights Reserved.
+          </span>
         </div>
-      </div>
-
-    
-      <div className="mt-10 text-center border-t border-gray-700 pt-5 text-sm">
-        &copy; {new Date().getFullYear()} Quill. All rights reserved.
-      </div>
-    </footer>
+      </footer>
+    </div>
   );
 };
 
 export default Footer;
+
+// <div className="fixed top-0 left-0 right-0 w-full p-4 z-50">
