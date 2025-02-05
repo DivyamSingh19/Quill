@@ -4,15 +4,15 @@ import { toast } from "react-toastify";
 
 const NewsletterBox = () => {
     const buttonHandler =(e)=>{
-        e.preventDefault();
-        toast.dark("Thankyou for registering")
+         
+        toast.success("Thankyou for registering")
 
     }
     const onSubmitHandler = (event: { preventDefault: () => void; }) => {
         event.preventDefault();
     }
     return (
-     <div className="realtive"> 
+     <div className=" top-500 md:top-520  left-0 relative "> 
       <div className="text-center">
         <p className="text-2xl font-medium text-gray-200">Subscribe now to get latest updates</p>
         <p className="text-gray-400 mt-3">
