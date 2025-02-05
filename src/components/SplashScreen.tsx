@@ -21,7 +21,7 @@ const SplashScreen = ({ onAnimationEnd }:{ onAnimationEnd: () => void }) => {
 
     const unmountTimer = setTimeout(() => {
       onAnimationEnd();
-    }, 3000);
+    }, 2000);
 
     return () => {
       clearInterval(progressInterval);
