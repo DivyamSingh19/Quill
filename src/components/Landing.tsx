@@ -16,23 +16,22 @@ interface GoogleGeminiEffectProps {
 
 export const Landing = ({
   pathLengths,
-  title,
-  description,
+  
   className,
 }: GoogleGeminiEffectProps) =>  {
   return (
-    <div className={cn("sticky top-80 w-screen", className)}>
-      <p className="text-lg md:text-7xl font-normal pb-4 text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-100 to-neutral-300">
-        {title || `Build with Aceternity UI`}
+    <div> 
+      <p className="text-2xl md:text-7xl font-normal pb-4 text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-100 to-neutral-300">
+         Transform your thoughts into <br/>  <span className="text-transparent bg-gradient-to-r from-blue-400 via-pink-600 to purple-500 bg-clip-text animate-gradient bg-[length:200%_200%] ">captivating stories</span>
       </p>
-      <p className="text-xs md:text-xl font-normal text-center text-neutral-400 mt-4 max-w-lg mx-auto">
-        {description ||
-          `Scroll this component and see the bottom SVG come to life wow this
-        works!`}
+    <div className={cn("sticky w-screen absolute left-0 ", className)}>
+       
+      <p className="text-lg md:text-2xl font-normal text-center text-neutral-400 mt-4 max-w-lg mx-auto">
+      Join a community of passionate writers sharing their unique perspectives. Create, publish, and connect with readers worldwide.
       </p>
       <div className="w-full h-[890px] -top-60 md:-top-40  flex items-center justify-center bg-red-transparent absolute ">
         <button className="font-bold bg-white rounded-full md:px-4 md:py-2 px-2 py-1 md:mt-24 mt-8 z-30 md:text-base text-black text-xs  w-fit mx-auto ">
-          ui.aceternity.com
+          Latest Blogs
         </button>
       </div>
       <svg
@@ -157,6 +156,7 @@ export const Landing = ({
           </filter>
         </defs>
       </svg>
+    </div>
     </div>
   );
 };
