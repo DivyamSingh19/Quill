@@ -18,7 +18,7 @@ import { UseSelector } from 'react-redux';
  
  
 function App() {
-   const authStatus = useSelector(s)  
+    
 
   return (
     <div className='px-4 sm:px-[5vw] md:px-[7vw] lg-px[9vw]'> 
