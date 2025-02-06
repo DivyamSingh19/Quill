@@ -6,6 +6,7 @@ import ExpandingSearch from './ExpandingSearch';
 import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import Button from './Button';
+import { CardGradient } from './CardGradient';
 
 const Navbar = () => {
     const [visible,setVisible] = useState(false);
@@ -46,7 +47,8 @@ const Navbar = () => {
   return (
     <div className=' flex items-center justify-between py-5 font-medium w-full pt-5 absolute top-0 left-0'>
      <Link to={'/'}><img src={assets.logo} className='w-36' alt = "" /></Link> 
-        <ul className='hidden sm:flex gap-5 text-sa txt-gray-700 border pt-5 px-5 py-5 pb-5 rounded-2xl '>
+      <CardGradient> 
+        <ul className='hidden sm:flex gap-5 text-sa txt-gray-700 bg-black border pt-5 px-5 py-5 pb-5 rounded-2xl '>
             {/* <NavLink to='/' className= 'flex flex-col items-center gap-1'>
                 <p>Home</p>
                 <hr className='w-2/4 border-none h-[1.5px] bg-gray-700 hidden'></hr> 
@@ -85,6 +87,7 @@ const Navbar = () => {
             
  
         </ul>
+        </CardGradient>
         <div className='flex items-center gap-6'>
             <ExpandingSearch/>
             <div className='group relative'>
