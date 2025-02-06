@@ -17,7 +17,7 @@ const GridSection = ({ title, children, className = "" }) => {
 const Card = ({ className = "" }) => {
   return (
     <CardGradient>
-      <div className={`bg-neutral-800 rounded-3xl ${className}`}></div>
+      <div className={`bg-black rounded-3xl ${className}`}></div>
     </CardGradient>
   );
 };
