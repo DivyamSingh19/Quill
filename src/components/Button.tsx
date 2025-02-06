@@ -1,10 +1,9 @@
-import React from 'react'
 
-const Button = () => {
+const Button = ({text1}) => {
   return (
-    <div>
-      
-    </div>
+    <button className="bg-black  border rounded-4xl">
+      <p className="text-white">{text1 || "your basic bitch"}</p>
+    </button>
   )
 }
 
