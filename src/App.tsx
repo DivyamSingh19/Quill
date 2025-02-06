@@ -12,9 +12,7 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import ResetPassword from './pages/ResetPassword';
 import  Profile from './pages/Profile';
-import Navbar from './components/Navbar';
-import Footer from './components/Footer';
-import { UseSelector } from 'react-redux';
+ 
  
  
 function App() {
