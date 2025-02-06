@@ -1,10 +1,17 @@
-
-const Button = ({text1}) => {
-  return (
-    <button className="bg-black  border rounded-4xl">
-      <p className="text-white">{text1 || "your basic bitch"}</p>
-    </button>
-  )
+import React from "react";
+interface input{
+  text :string
 }
+const Button = ({text,onClick}) => {
+  return (
+    <button
+      type="button"
+      className="relative  text-white font-bold rounded-full px-6 py-3 transition-all bg-black border-2 border-blue-300 hover:border-purple-500 cursor-pointer"
+      
+    >
+      {text}
+    </button>
+  );
+};
 
-export default Button
+export default Button;
