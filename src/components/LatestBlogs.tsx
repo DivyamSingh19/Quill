@@ -1,64 +1,65 @@
-import React from 'react';
-import { ChevronRight } from 'lucide-react';
+import { useEffect, useState } from "react";
+import service from "../appwrite/config";
 
-const GridSection = ({
-  title ,
-  children,
-  className = ""
-}) => {
-  return (
-    <div className={className}>
-      <div className="flex items-center gap-2 mb-4 text-sm">
-        {title}
-        <ChevronRight size={16} />
-      </div>
-      {children}
-    </div>
-  );
-};
+interface Blog {
+  $id: string;
+  title: string;
+  slug: string;
+  content: string;
+  featuredImage: string;
+  status: boolean;
+  userId: string;
+}
 
-const Card = ({ className = "" }) => {
-  return (
-    <div className={`bg-neutral-800 rounded-xl ${className}`}>
-      {/* Card content goes here */}
-    </div>
-  );
-};
+export default function LatestBlogs() {
+  const [blogs, setBlogs] = useState<Blog[]>([]);
+  const [loading, setLoading] = useState(true);
 
-const LatestBlogs = () => {
+  useEffect(() => {
+    async function fetchBlogs() {
+      try {
+        const response = await service.getPosts([
+          // Fetch only active posts and sort by latest
+          Query.equal("status", true),
+          Query.orderDesc("$createdAt"),
+          Query.limit(6), // Get the latest 6 blogs
+        ]);
+        if (response) {
+          setBlogs(response.documents);
+        }
+      } catch (error) {
+        console.error("Error fetching blogs:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    fetchBlogs();
+  }, []);
+
+  if (loading) return <p className="text-center py-5 text-gray-600">Loading...</p>;
+
   return (
-    <div className=" absolute top-250 md:top-380  left-0  sm:pt-15 pt-10 w-screen h-screen  text-white">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-        {/* Left Grid - Genres */}
-        <GridSection title="Explore top genres">
-          <div className="grid grid-cols-2 gap-4 h-[400px]">
-            <div className="grid gap-4">
-              <Card className="w-full h-[180px]" />
-              <Card className="w-full flex-1" />
-            </div>
-            <div className="grid gap-4">
-              <Card className="w-full flex-1" />
-              <Card className="w-full h-[180px]" />
+    <div className="absolute sm:top-500 md:top-450 left-0container mx-auto px-4 py-8">
+      <h2 className="text-3xl font-bold text-center mb-6">Latest Blogs</h2>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        {blogs.map((blog) => (
+          <div key={blog.$id} className="bg-white shadow-lg rounded-xl overflow-hidden">
+            <img
+              src={service.getFilePreview(blog.featuredImage)}
+              alt={blog.title}
+              className="w-full h-48 object-cover"
+            />
+            <div className="p-4">
+              <h3 className="text-xl font-semibold">{blog.title}</h3>
+              <p className="text-gray-600 text-sm mt-2">{blog.content.substring(0, 100)}...</p>
+              <a href={`/blog/${blog.slug}`} className="text-blue-500 font-medium mt-3 inline-block">
+                Read More →
+              </a>
             </div>
           </div>
-        </GridSection>
-
-        {/* Right Grid - Writers */}
-        <GridSection title="Top writers">
-          <div className="grid grid-cols-2 gap-4 h-[400px]">
-            <div className="grid gap-4">
-              <Card className="w-full h-[180px]" />
-              <Card className="w-full flex-1" />
-            </div>
-            <div className="grid gap-4">
-              <Card className="w-full h-[180px]" />
-              <Card className="w-full flex-1" />
-            </div>
-          </div>
-        </GridSection>
+        ))}
       </div>
     </div>
   );
-};
-
-export default LatestBlogs;
+}
