@@ -105,7 +105,7 @@ const Signup = () => {
                   <input type="checkbox" className="rounded border-gray-800 text-emerald-500 focus:ring-emerald-500" />
                   <span className="ml-2 text-sm text-gray-400">Remember me{" "}</span>
                 </label>
-                <a href="#" className="text-sm text-emerald-500 hover:text-emerald-400">Forgot Password?</a>
+                <a href="/reset-password" className="text-sm text-emerald-500 hover:text-emerald-400">Forgot Password?</a>
               </div>
 
               <button
