@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Container = () => {
+function Container ({children}){
   return (
-    <div>
-      
+    <div className='bg-white w-full max-w-7xl px-4'>
+      {children}
     </div>
   )
 }

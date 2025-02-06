@@ -27,7 +27,7 @@ const Card = ({ className = "" }) => {
     return (
       <div className="absolute top-170 md:top-230 left-0 sm:pt-15 pt-10 w-screen h-screen text-white">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-20 max-w-6xl mx-auto px-4">
-          {/* Left Grid - Genres */}
+           
           <GridSection title="Explore top genres">
             <div className="grid grid-cols-2 sm:grid-cols-2 gap-4 h-auto md:h-[400px]">
               <div className="grid gap-4">
@@ -41,16 +41,16 @@ const Card = ({ className = "" }) => {
             </div>
           </GridSection>
   
-          {/* Right Grid - Writers */}
+           
           <GridSection title="Top writers on Quill ">
             <div className="grid grid-cols-2 sm:grid-cols-2 gap-4 h-auto md:h-[400px]">
               <div className="grid gap-4">
-                <Card className="w-full h-[200px]" />
-                <Card className="w-full h-[200px]" />
+                <Card className="w-full h-[220px]" />
+                <Card className="w-full h-[220px]" />
               </div>
               <div className="grid gap-4">
-                <Card className="w-full flex-1 h-[200px]" />
-                <Card className="w-full h-[200px]" />
+                <Card className="w-full flex-1 h-[220px]" />
+                <Card className="w-full h-[220px]" />
               </div>
             </div>
           </GridSection>
