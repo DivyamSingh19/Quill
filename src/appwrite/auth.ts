@@ -42,7 +42,7 @@ class AuthService {
 
     async login({ email, password }: User) {
         try {
-            const session = await this.account.createEmailSession(email, password);
+            const session = await this.account.createEmailPasswordSession(email, password);
             toast.success("Login successful");
             return session;
         } catch (error) {
@@ -61,7 +61,20 @@ class AuthService {
             return null;
         }
     }
-
+    async loginWithGoogle() {
+        try {
+             
+            const session = await this.account.createOAuth2Session(
+                'google',
+                conf.googleAuthSuccessUrl || window.location.origin,
+                conf.googleAuthFailureUrl || `${window.location.origin}/auth/login`
+            );
+            return session;
+        } catch (error) {
+            console.log("Appwrite service :: loginWithGoogle :: error", error);
+            throw error;
+        }
+    }
     async logout() {
         try {
             await this.account.deleteSessions();
