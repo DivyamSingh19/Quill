@@ -28,7 +28,7 @@ function Allposts()  {
   return (
     <div>
       <Navbar/>
-      <Button text1={"All-posts"}/>
+      <Button text={"Nigga mon"}/>
     </div>
   )
 }
