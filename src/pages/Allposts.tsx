@@ -1,6 +1,7 @@
 import { useEffect , useState } from "react"
 import appwriteService from "../appwrite/config"
 import Navbar from "../components/Navbar";
+import Button from "../components/Button";
 function Allposts()  {
   const [posts,setPosts] = useState([]);
   const [searchQuery , setSearchQuery] = useState('');
@@ -27,6 +28,7 @@ function Allposts()  {
   return (
     <div>
       <Navbar/>
+      <Button text1={"All-posts"}/>
     </div>
   )
 }
