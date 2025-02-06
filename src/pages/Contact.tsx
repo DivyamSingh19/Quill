@@ -5,6 +5,9 @@ import { useState } from 'react';
  
 
 const Contact = () => {
+  const handleBackClick = () =>{
+    window.history.back();
+  }
   const [formData,setFormData] = useState({
     name :"",
     email : "",
@@ -34,8 +37,15 @@ const Contact = () => {
     <> 
      
     <div className=" text-white p-8 sm:p-12 absolute top-15 left-0 w-screen h-screen  bg-[radial-gradient(500px_circle_at_bottom,_var(--tw-gradient-stops))] from-gradient via-mid to-background">
+    <button
+          onClick={handleBackClick}
+          className="bg-gray-200 text-black px-3 py-1.5 rounded-lg text-sm font-medium 
+                   hover:bg-gray-300 cursor-pointer transition-colors duration-200 flex items-center gap-2"
+        >
+          ← Back
+        </button>
       <div className="max-w-6xl mx-auto">
-         
+       
         <div className="text-center mb-12">
           <h1 className="text-3xl sm:text-5xl font-bold tracking-tight">
             Get in Touch with <span className="text-transparent bg-clip-text bg-gradient-to-r from-gradient to-gray-500">Quill</span>
