@@ -1,6 +1,7 @@
 import { cn } from "../lib/utils";
 import { motion, MotionValue } from "framer-motion";
 import React from "react";
+import { useHref, useNavigate } from "react-router-dom";
 
 const transition = {
   duration: 0,
@@ -13,12 +14,18 @@ interface GoogleGeminiEffectProps {
   description?: string;
   className?: string;
 }
-
-export const Landing = ({
+ 
+ 
+  const Landing = ({
+  
   pathLengths,
   
   className,
 }: GoogleGeminiEffectProps) =>  {
+  const navigate = useNavigate();
+  const handleClick =() => {
+    navigate("/all-posts")
+  }
   return (
     <div> 
       <p className="text-4xl md:text-7xl font-normal pb-4 text-center bg-clip-text text-transparent bg-gradient-to-b from-neutral-100 to-neutral-300">
@@ -30,7 +37,7 @@ export const Landing = ({
       Join a community of passionate writers sharing their unique perspectives. Create, publish, and connect with readers worldwide.
       </p>
       <div className="w-full h-[890px] -top-60 md:-top-40  flex items-center justify-center bg-red-transparent absolute ">
-        <button className="font-bold bg-white rounded-full md:px-4 md:py-2 px-2 py-1 md:mt-24 mt-8 z-30 md:text-base text-black text-xs  w-fit mx-auto ">
+        <button onClick={handleClick} className="font-bold bg-white rounded-full md:px-4 md:py-2 px-2 py-1 md:mt-24 mt-8 z-30 md:text-base text-black text-xs  w-fit mx-auto cursor-pointer ">
           Latest Blogs
         </button>
       </div>
@@ -160,3 +167,5 @@ export const Landing = ({
     </div>
   );
 };
+
+export default Landing

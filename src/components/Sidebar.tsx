@@ -1,7 +1,13 @@
-
+import { NavLink } from "react-router-dom"
 const Sidebar = () => {
+
   return (
-    <div>
+    <div className="w-[18%] min-h-screen border-r-2">
+      <div className="">
+        <NavLink className='' to={}>
+
+        </NavLink>
+      </div>
       
     </div>
   )

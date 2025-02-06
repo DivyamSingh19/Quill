@@ -14,10 +14,11 @@ import ResetPassword from './pages/ResetPassword';
 import  Profile from './pages/Profile';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import { UseSelector } from 'react-redux';
  
  
 function App() {
-   
+   const authStatus = useSelector(s)  
 
   return (
     <div className='px-4 sm:px-[5vw] md:px-[7vw] lg-px[9vw]'> 
