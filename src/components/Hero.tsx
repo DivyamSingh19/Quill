@@ -1,7 +1,7 @@
  
 import { useScroll, useTransform } from "framer-motion";
 import React from "react";
-import {  Landing  } from "./Landing";
+import   Landing   from "./Landing";
 import GridLayout from "./Grid";
 import Navbar from "./Navbar";
 
