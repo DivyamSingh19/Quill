@@ -5,7 +5,8 @@ const conf = {
     appwriteCollectionId: String(import.meta.env.VITE_APPWRITE_COLLECTION_ID),
     appwriteBucketId: String(import.meta.env.VITE_APPWRITE_BUCKET_ID),
     googleAuthSuccessUrl: String(import.meta.env.VITE_GOOGLE_AUTH_SUCCESS_URL),
-    googleAuthFailureUrl: String(import.meta.env.VITE_GOOGLE_AUTH_FAILURE_URL)
+    googleAuthFailureUrl: String(import.meta.env.VITE_GOOGLE_AUTH_FAILURE_URL),
+    rteAPI:String(import.meta.env.RTE_API)
 }
 
 
