@@ -33,7 +33,7 @@ const About = () => {
         <button
           onClick={handleBackClick}
           className="bg-gray-200 text-black px-3 py-1.5 rounded-lg text-sm font-medium 
-                   hover:bg-gray-300 transition-colors duration-200 flex items-center gap-2"
+                   hover:bg-gray-300 cursor-pointer transition-colors duration-200 flex items-center gap-2"
         >
           ← Back
         </button>
@@ -41,7 +41,7 @@ const About = () => {
         <button
           onClick={handleDevInfoClick}
           className="bg-white text-black pt-2 px-3 py-1.5 rounded-lg text-sm font-medium
-                   hover:bg-gray-400 transition-colors duration-200"
+                   hover:bg-gray-400 transition-colors duration-200 cursor-pointer"
         >
           Developer Info
         </button>
