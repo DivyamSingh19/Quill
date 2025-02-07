@@ -1,6 +1,7 @@
 import React from "react";
 import { ChevronRight } from "lucide-react";
 import { CardGradient } from "./CardGradient";
+import { assets } from "../assets/assets";
 
 const GridSection = ({ title, children, className = "" }) => {
   return (
@@ -31,12 +32,12 @@ const Card = ({ className = "" }) => {
           <GridSection title="Explore top genres">
             <div className="grid grid-cols-2 sm:grid-cols-2 gap-4 h-auto md:h-[400px]">
               <div className="grid gap-4">
-                <Card className="w-full h-[300px]" />
-                <Card className="w-full h-[150px]" />
+                <Card className="w-full h-[300px]" image={assets.theme1}/>
+                <Card className="w-full h-[150px]" image={assets.theme1}/>
               </div>
               <div className="grid gap-4">
-                <Card className="w-full flex-1 h-[150px]" />
-                <Card className="w-full h-[300px]" />
+                <Card  className="w-full flex-1 h-[150px]" image={assets.theme1} />
+                <Card className="w-full h-[300px]" image={assets.theme1}/>
               </div>
             </div>
           </GridSection>
@@ -45,12 +46,12 @@ const Card = ({ className = "" }) => {
           <GridSection title="Top writers on Quill ">
             <div className="grid grid-cols-2 sm:grid-cols-2 gap-4 h-auto md:h-[400px]">
               <div className="grid gap-4">
-                <Card className="w-full h-[220px]" />
-                <Card className="w-full h-[220px]" />
+                <Card className="w-full h-[220px]" image={assets.theme1}/>
+                <Card className="w-full h-[220px]" image={assets.theme1}/>
               </div>
               <div className="grid gap-4">
-                <Card className="w-full flex-1 h-[220px]" />
-                <Card className="w-full h-[220px]" />
+                <Card className="w-full flex-1 h-[220px]" image={assets.theme1} />
+                <Card className="w-full h-[220px]" image={assets.theme1}/>
               </div>
             </div>
           </GridSection>

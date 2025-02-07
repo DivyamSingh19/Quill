@@ -2,14 +2,16 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer className="relative bg-black rounded-lg shadow w-full">
+
+    <footer className="relative bg-black rounded-lg shadow w-full flex items-center justify-between">
+      <hr className="bg-white"/>
       <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
         <div className="sm:flex sm:items-center sm:justify-between">
           <a
             href="#"
             className="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse"
           >
-            <img src="#" className="h-8" alt="Logo" />
+            
             <span className="self-center text-2xl font-semibold whitespace-nowrap text-white">
               Quill
             </span>
