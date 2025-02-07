@@ -12,21 +12,23 @@ import { FcGoogle } from "react-icons/fc";
 
 const Signup = () => {
   const navigate = useNavigate();
-  const [errorp, setErrorp] = useState("");
+  const [error, setError] = useState("");
   const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
 
-  const create = async (data) => {
-    setErrorp("");
+  const create = async(data) => {
+    setError("")
     try {
-      const userData = await authService.createAccount(data);
-      if (userData) dispatch(login(userData));
-      navigate("/");
+        const userData = await authService.createAccount(data)
+        if (userData) {
+            const userData = await authService.getCurrentUser()
+            if(userData) dispatch(login(userData));
+            navigate("/")
+        }
     } catch (error) {
-      console.log(error);
-      setErrorp(errorp.message);
+        setError(error.message)
     }
-  };
+}
 
   useEffect(() => {
     document.body.style.overflow = "hidden";

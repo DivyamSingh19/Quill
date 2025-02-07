@@ -5,6 +5,7 @@ import { Menu, UserCircle, X, ChevronLeft } from "lucide-react";
 import ExpandingSearch from "./ExpandingSearch";
 import Button from "./Button";
 import { CardGradient } from "./CardGradient";
+import Logoutbutton from "./Logoutbutton";
 
 const Navbar = () => {
   const [visible, setVisible] = useState(false);
@@ -45,7 +46,7 @@ const Navbar = () => {
             )}
             {authStatus && (
               <li>
-                <Button />
+                <Logoutbutton />
               </li>
             )}
           </ul>

@@ -1,53 +1,37 @@
-import conf from "../conf/conf";
-import { Client, Account, ID ,Databases } from "appwrite";
-import { toast } from "react-toastify";
+import conf from '../conf/conf.js';
+import { Client, Account, ID } from "appwrite";
 
-interface User {
-    email: string;
-    password: string;
-    name?: string;
-}
 
-class AuthService {
-    private client: Client;
-    private account: Account;
+export class AuthService {
+    client = new Client();
+    account;
 
     constructor() {
-        this.client = new Client()
+        this.client
             .setEndpoint(conf.appwriteUrl)
             .setProject(conf.appwriteProjectId);
         this.account = new Account(this.client);
+            
     }
 
-    async createAccount({ email, password, name }: User) {
+    async createAccount({email, password, name}) {
         try {
-            const userAccount = await this.account.create(
-                ID.unique(),
-                email,
-                password,
-                name
-            );
-            
+            const userAccount = await this.account.create(ID.unique(), email, password, name);
             if (userAccount) {
-                toast.success("Account Created Successfully");
-                return await this.login({ email, password });
+                // call another method
+                return this.login({email, password});
+            } else {
+               return  userAccount;
             }
-            return userAccount;
         } catch (error) {
-            console.log("Create account error:", error);
-            toast.error("User already exists");
             throw error;
         }
     }
 
-    async login({ email, password }: User) {
+    async login({email, password}) {
         try {
-            const session = await this.account.createEmailPasswordSession(email, password);
-            toast.success("Login successful");
-            return session;
+            return await this.account.createEmailPasswordSession(email, password);
         } catch (error) {
-            console.log("Login error:", error);
-            toast.error("Couldn't login now. Try Again Later");
             throw error;
         }
     }
@@ -56,40 +40,22 @@ class AuthService {
         try {
             return await this.account.get();
         } catch (error) {
-            console.log("Get current user error:", error);
-            toast.error("Could not get user");
-            return null;
+            console.log("Appwrite serive :: getCurrentUser :: error", error);
         }
+
+        return null;
     }
-    async loginWithGoogle() {
-        try {
-             
-            const session = await this.account.createOAuth2Session(
-                'google',
-                conf.googleAuthSuccessUrl || window.location.origin,
-                conf.googleAuthFailureUrl || `${window.location.origin}/auth/login`
-            );
-            return session;
-        } catch (error) {
-            console.log("Appwrite service :: loginWithGoogle :: error", error);
-            throw error;
-        }
-    }
+
     async logout() {
+
         try {
             await this.account.deleteSessions();
-            toast.success("Logout successful");
         } catch (error) {
-            console.log("Logout error:", error);
-            toast.error("Unable to Logout");
-            throw error;
+            console.log("Appwrite serive :: logout :: error", error);
         }
     }
 }
 
-// Create a single instance and export it
 const authService = new AuthService();
 
-// Export the type and the instance
-export type { AuthService };
-export default authService;
+export default authService
