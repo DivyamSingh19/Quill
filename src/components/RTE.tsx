@@ -2,8 +2,23 @@
 import {Editor } from '@tinymce/tinymce-react';
 import {Controller } from 'react-hook-form';
 import conf from '../conf/conf';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 export default function RTE({name, control, label, defaultValue =""}) {
+  const [content, setContent] = useState('');
+
+  useEffect(() => {
+    const savedContent = localStorage.getItem('draftContent');
+    if (savedContent) {
+      setContent(savedContent);
+    }
+  }, []);
+
+  const handleEditorChange = (content, editor) => {
+    setContent(content);
+    localStorage.setItem('draftContent', content);
+  };
   return (
     <div className='w-full'> 
     {label && <label className='inline-block mb-1 pl-1'>{label}</label>}
@@ -13,8 +28,9 @@ export default function RTE({name, control, label, defaultValue =""}) {
     control={control}
     render={({field: {onChange}}) => (
         <Editor
-        apiKey= {conf.rteAPI}
+        apiKey='k2d3535udweapopyvps5emepjsszkfjghwo413ky7gkqjt2q'
         initialValue={defaultValue}
+        onChange={handleEditorChange}
         init={{
             initialValue: defaultValue,
             height: 500,

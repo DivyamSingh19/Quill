@@ -45,8 +45,8 @@ const Navbar = () => {
     ]
     
   return (
-    <div className=' flex items-center justify-between py-5 font-medium w-full pt-5 absolute top-0 left-0'>
-     <Link to={'/'}><img src={assets.logo} className='w-36' alt = "" /></Link> 
+    <div className=' flex items-center justify-between py-5 font-medium w-full pt-4 absolute top-0 left-0'>
+     <Link to={'/'} className='px-4 pt-1 text-4xl font-medium'>Quill.</Link> 
       <CardGradient> 
         <ul className='hidden sm:flex gap-5 text-sa txt-gray-700 bg-black border pt-5 px-5 py-5 pb-5 rounded-2xl '>
             {/* <NavLink to='/' className= 'flex flex-col items-center gap-1'>
@@ -74,7 +74,7 @@ const Navbar = () => {
                     <li key={item.name}>
                         <button
                           onClick={()=>navigate(item.slug)}
-                          className='inline-block px-6 py-2 duration-200 hover: rounded-full cursor-pointer'>{item.name}</button>
+                          className='inline-block px-6 py-2 duration-200 hover:bg-white hover:text-black rounded-full cursor-pointer'>{item.name}</button>
                     </li>
                 ):null)}
                 {

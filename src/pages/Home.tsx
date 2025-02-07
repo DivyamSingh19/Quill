@@ -38,7 +38,7 @@ const Home = () => {
           
           <Hero />
           <GridLayout/>
-          <LatestBlogs/>
+          
           <NewsletterBox/>
            
         </div>
