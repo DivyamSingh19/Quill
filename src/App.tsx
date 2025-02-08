@@ -13,7 +13,9 @@ import Signup from './pages/Signup'
 import ResetPassword from './pages/ResetPassword';
 import  Profile from './pages/Profile';
 import Onboarding from './pages/Onboarding';
- 
+import AuthLayout from "./components/AuthLayout"
+import EditPost from './pages/EditPost';
+import Post from './pages/Post';
  
  
  
@@ -30,9 +32,11 @@ function App() {
           <Route path='/' element={<Home/>}></Route>
           <Route path='/about' element={<AboutUs/>}></Route>
           <Route path='/contact' element={<Contact/>}></Route>
-          <Route path='/login' element={<Login/>}></Route>
-          <Route path='/signup' element={<Signup/>}></Route>
-          <Route path='/add-post' element={<AddPost/>}></Route>
+          <Route path='/login' element={<AuthLayout authentication ={false}> <Login/></AuthLayout>}></Route>
+          <Route path='/signup' element={<AuthLayout authentication ={false}> <Signup/></AuthLayout>}></Route>
+          <Route path='/add-post' element={<AuthLayout authentication> <AddPost/></AuthLayout>}></Route>
+          <Route path='/edit-post/:slug' element={<AuthLayout authentication> <EditPost/></AuthLayout>}></Route>
+          <Route path='/post/:slug' element={<AuthLayout authentication> <Post/></AuthLayout>}></Route>
           <Route path='/all-posts' element={<Allposts/>}></Route>
           <Route path='/reset-password' element={<ResetPassword/>}></Route>
           <Route path='/profile' element={<Profile/>}></Route>
