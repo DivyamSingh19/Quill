@@ -12,8 +12,8 @@ import Login from './pages/Login'
 import Signup from './pages/Signup'
 import ResetPassword from './pages/ResetPassword';
 import  Profile from './pages/Profile';
-import Onboarding1 from './pages/Onboarding/Onboarding1';
-import Onboarding2 from './pages/Onboarding/Onboarding2';
+import Onboarding from './pages/Onboarding';
+ 
  
  
  
@@ -36,8 +36,8 @@ function App() {
           <Route path='/all-posts' element={<Allposts/>}></Route>
           <Route path='/reset-password' element={<ResetPassword/>}></Route>
           <Route path='/profile' element={<Profile/>}></Route>
-          <Route path='/onboarding1' element={<Onboarding1/>}></Route>
-          <Route path='/onboarding2' element={<Onboarding2/>}></Route>
+          <Route path='/onboarding' element={<Onboarding/>}></Route>
+           
         </Routes>
          
     </div>

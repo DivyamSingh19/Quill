@@ -1,44 +1,86 @@
-import { useEffect, useState } from 'react';
-import '../App.css'
+import React, { useEffect, useState } from 'react';
 
-const SplashScreen = ({ onAnimationEnd }:{ onAnimationEnd: () => void }) => {
+interface SplashScreenProps {
+  onComplete?: () => void;
+  appName?: string;
+}
 
-  const [isClosing, setIsClosing] = useState(false);
-  const [progress, setProgress] = useState(0);
+const SplashScreen: React.FC<SplashScreenProps> = ({ 
+  onComplete,
+  appName = "Quill"
+}) => {
+  const [showContent, setShowContent] = useState(false);
+  const [exitAnimation, setExitAnimation] = useState(false);
 
   useEffect(() => {
      
-    const progressInterval = setInterval(() => {
-      setProgress(prev => {
-        if (prev < 100) return prev + 1;
-        return prev;
-      });
-    }, 30);  
+    const showTimeout = setTimeout(() => {
+      setShowContent(true);
+    }, 500);
 
-    const timer = setTimeout(() => {
-      setIsClosing(true);
+    
+    const exitTimeout = setTimeout(() => {
+      setExitAnimation(true);
     }, 2500);
 
-    const unmountTimer = setTimeout(() => {
-      onAnimationEnd();
-    }, 2000);
+    
+    const completeTimeout = setTimeout(() => {
+      onComplete?.();
+    }, 3000);
 
     return () => {
-      clearInterval(progressInterval);
-      clearTimeout(timer);
-      clearTimeout(unmountTimer);
+      clearTimeout(showTimeout);
+      clearTimeout(exitTimeout);
+      clearTimeout(completeTimeout);
     };
-  }, [onAnimationEnd]);
+  }, [onComplete]);
 
   return (
-    <div className={`splash-screen ${isClosing ? 'fade-out' : ''}`}>
-      <div className="fade-in-out">
-        <h2>  <span/> Under Development</h2>
-        <div className="loading-bar-container">
-          <div 
-            className="loading-bar" 
-            style={{ width: `${progress}%` }}
-          />
+    <div className={`fixed inset-0 bg-black z-50 flex items-center justify-center
+                    transition-opacity duration-500 ease-in-out
+                    ${exitAnimation ? 'opacity-0' : 'opacity-100'}`}>
+      <div className="relative">
+        {/* Animated circles */}
+        <div className="absolute inset-0 -m-8">
+          <div className={`w-64 h-64 rounded-full border-t-2 border-l-2 border-purple-500
+                          transition-all duration-1000 ease-out
+                          ${showContent ? 'scale-100 rotate-180 opacity-20' : 'scale-50 rotate-0 opacity-0'}`} />
+        </div>
+        <div className="absolute inset-0 -m-12">
+          <div className={`w-72 h-72 rounded-full border-r-2 border-b-2 border-blue-500
+                          transition-all duration-1000 delay-100 ease-out
+                          ${showContent ? 'scale-100 -rotate-180 opacity-20' : 'scale-50 rotate-0 opacity-0'}`} />
+        </div>
+
+         
+        <div className={`relative flex flex-col items-center transition-all duration-700 ease-out
+                        ${showContent ? 'opacity-100 transform translate-y-0' : 'opacity-0 transform translate-y-4'}`}>
+          {/* Animated logo/icon */}
+          <div className="w-20 h-20 mb-6 relative">
+            <div className={`absolute inset-0 bg-gradient-to-br from-purple-500 to-blue-500 rounded-lg
+                            transition-transform duration-1000 ease-out
+                            ${showContent ? 'transform rotate-180 scale-100' : 'transform rotate-0 scale-0'}`} />
+            <div className={`absolute inset-0 bg-black m-1 rounded-lg flex items-center justify-center
+                            text-white text-2xl font-bold`}>
+              {appName.charAt(0)}
+            </div>
+          </div>
+
+          
+          <h1 className="text-3xl font-bold text-white mb-2">{appName}</h1>
+          <p className="text-gray-400">Welcome to Quill</p>
+
+           
+          <div className="flex space-x-2 mt-4">
+            {[0, 1, 2].map((i) => (
+              <div
+                key={i}
+                className={`w-2 h-2 rounded-full bg-purple-500
+                           animate-bounce`}
+                style={{ animationDelay: `${i * 0.15}s` }}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>

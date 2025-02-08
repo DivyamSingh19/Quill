@@ -30,7 +30,7 @@ const Home = () => {
       {loading ? (
         <SplashScreen
           onAnimationEnd={function (): void {
-            throw new Error('Function not implemented.');
+            
           }}
         />
       ) : (
