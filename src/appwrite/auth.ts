@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import conf from '../conf/conf.js';
 import { Client, Account, ID } from "appwrite";
 
@@ -19,19 +20,26 @@ export class AuthService {
             const userAccount = await this.account.create(ID.unique(), email, password, name);
             if (userAccount) {
                 // call another method
+                toast.dark("Account Created Successfully")
                 return this.login({email, password});
             } else {
                return  userAccount;
             }
         } catch (error) {
+            toast.error("Account Creation Failed")
             throw error;
         }
     }
 
     async login({email, password}) {
         try {
-            return await this.account.createEmailPasswordSession(email, password);
+            
+             const session =  await this.account.createEmailPasswordSession(email, password);
+             toast.dark("Login Successful !")
+             return session
+            
         } catch (error) {
+            toast.error("Login Failed")
             throw error;
         }
     }
@@ -49,8 +57,11 @@ export class AuthService {
     async logout() {
 
         try {
+            
             await this.account.deleteSessions();
+            toast.dark("Logout Successful")
         } catch (error) {
+            toast.error("Couldn't Logout")
             console.log("Appwrite serive :: logout :: error", error);
         }
     }
