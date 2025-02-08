@@ -46,12 +46,12 @@ Quikk demonstrates how to build a full-stack web application using React with Ty
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/](https://github.com/)[DivyamSingh19]/[Quill].git
+   git clone (https://github.com/DivyamSingh19/Quill.git)
    ```
 
 2. **Navigate to the project directory:**
    ```bash
-   cd [your-repo-name]
+   cd Quill
    ```
 
 3. **Install dependencies:**
@@ -92,7 +92,7 @@ REACT_APP_APPWRITE_PROJECT_ID=[Your Appwrite Project ID]
 │   │   ├── ...
 │   ├── pages/            # Page components (.tsx)
 │   │   ├── Home.tsx
-│   │   ├── CreatePost.tsx
+│   │   ├── AddPost.tsx
 │   │   ├── ...
 │   ├── store/         # Appwrite service functions (.ts)
 │   │   ├── authSlice.ts
