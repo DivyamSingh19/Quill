@@ -36,11 +36,11 @@ Quikk demonstrates how to build a full-stack web application using React with Ty
 * **Frontend:**
     * React
     * TypeScript
-    * [Other relevant libraries like React Router, Material UI, etc.]
+    * React-redux
+
 * **Backend:**
     * Appwrite
-* **Other:**
-    * [Any other relevant technologies]
+
 
 ## Setup
 
