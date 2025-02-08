@@ -37,7 +37,7 @@ function App() {
           <Route path='/add-post' element={<AuthLayout authentication> <AddPost/></AuthLayout>}></Route>
           <Route path='/edit-post/:slug' element={<AuthLayout authentication> <EditPost/></AuthLayout>}></Route>
           <Route path='/post/:slug' element={<AuthLayout authentication> <Post/></AuthLayout>}></Route>
-          <Route path='/all-posts' element={<Allposts/>}></Route>
+          <Route path='/all-posts' element={<AuthLayout authentication> <Allposts/></AuthLayout>}></Route>
           <Route path='/reset-password' element={<ResetPassword/>}></Route>
           <Route path='/profile' element={<Profile/>}></Route>
           <Route path='/onboarding' element={<Onboarding/>}></Route>
