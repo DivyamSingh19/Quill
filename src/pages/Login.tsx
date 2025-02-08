@@ -21,6 +21,7 @@ const Login = () => {
       if (session) {
         const userData = await authService.getCurrentUser();
         if (userData) dispatch(storeLogin(userData));
+        navigate("/")
       }
     } catch (error) {
       console.log(error);
@@ -36,7 +37,7 @@ const Login = () => {
   return (
     <div className="w-screen h-screen absolute left-0 top-0  ">
       <div className="flex w-screen h-screen absolute left-0 top-0">
-        {/* Left side with logo */}
+         
         <div className="hidden md:flex md:w-1/2  items-center justify-center ">
           <img src={assets.banner} alt="" />
         </div>
