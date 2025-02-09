@@ -43,7 +43,7 @@ const Card = ({ className = "" }) => {
           </GridSection>
   
            
-          <GridSection title="Top writers on Quill ">
+          <GridSection title="Latest Posts ">
             <div className="grid grid-cols-2 sm:grid-cols-2 gap-4 h-auto md:h-[400px]">
               <div className="grid gap-4">
                 <Card className="w-full h-[220px]" image={assets.theme1}/>
