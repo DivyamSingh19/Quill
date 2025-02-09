@@ -6,6 +6,7 @@ import { Hero } from '../components/Hero';
 import usePreventZoom from '../components/PreventZoom';
 import NewsletterBox from '../components/NewsLetter';
 import Footer from '../components/Footer';
+import Logoutbutton from '../components/Logoutbutton';
 
 const Home = () => {
   usePreventZoom();
@@ -38,6 +39,7 @@ const Home = () => {
           
           <Hero />
           <GridLayout/>
+           <Logoutbutton/>
           
           <NewsletterBox/>
            
