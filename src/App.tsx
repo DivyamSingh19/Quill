@@ -19,7 +19,6 @@ import Post from './pages/Post';
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
  
- 
 function App() {
   return (
     <div className='px-4 sm:px-[5vw] md:px-[7vw] lg-px[9vw]'> 
@@ -30,7 +29,7 @@ function App() {
         <Route path='/about' element={<AboutUs/>} />
         <Route path='/contact' element={<Contact/>} />
         
-        {/* Auth routes - redirect if already logged in */}
+        
         <Route path='/login' element={
           <AuthLayout authentication={false}><Login/></AuthLayout>
         } />
@@ -64,13 +63,14 @@ function App() {
          
         <Route path='*' element={<NotFound />} />
       </Routes>
+       
     </div>
   )
 }
 
  
 function NotFound() {
-  useEffect(()=>{
+  useEffect(() =>{
     document.body.style.overflow="hidden"
     return () => (
       document.body.style.overflow ="auto"
