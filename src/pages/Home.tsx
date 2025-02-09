@@ -7,6 +7,7 @@ import usePreventZoom from '../components/PreventZoom';
 import NewsletterBox from '../components/NewsLetter';
 import Footer from '../components/Footer';
 import Logoutbutton from '../components/Logoutbutton';
+import F2 from '../components/F2';
 
 const Home = () => {
   usePreventZoom();
@@ -35,6 +36,7 @@ const Home = () => {
           }}
         />
       ) : (
+        <div> 
         <div className=" ">
           
           <Hero />
@@ -42,9 +44,12 @@ const Home = () => {
            <Logoutbutton/>
           
           <NewsletterBox/>
-           
+           <F2/>
+        </div>
+         
         </div>
       )}
+       
        
     </div>
   );
