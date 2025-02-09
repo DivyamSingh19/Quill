@@ -14,7 +14,7 @@ const Navbar = () => {
 
   const navItems = [
     { name: "Home", slug: "/", active: true },
-    { name: "Login", slug: "/login", active: true },
+    { name: "Login", slug: "/login", active: !authStatus },
     { name: "Signup", slug: "/signup", active: !authStatus },
     { name: "Your Pen", slug: "/add-post", active: authStatus },
     { name: "Blogs", slug: "/all-posts", active: authStatus },
@@ -44,27 +44,27 @@ const Navbar = () => {
                 </li>
               ) : null
             )}
-            {authStatus && (
+            {/* {authStatus && (
               <li>
                 <Logoutbutton />
               </li>
-            )}
+            )} */}
           </ul>
         </CardGradient>
       </div>
 
       <div className="flex items-center gap-4 md:gap-6">
         <ExpandingSearch />
-        <UserCircle className="w-6 h-6 cursor-pointer text-white hover:text-white" />
+        <UserCircle className="w-6 h-6 cursor-pointer text-white hover:text-white " />
 
-        {/* Ensure menu icon is fully visible */}
+         
         <Menu
           onClick={() => setVisible(true)}
           className="w-6 h-6 cursor-pointer text-white hover:text-white md:hidden"
         />
       </div>
 
-      {/* Sidebar Menu for Small Screens */}
+       
       <div
         className={`fixed top-0 right-0 h-screen w-full bg-white transition-transform transform ${
           visible ? "translate-x-0" : "translate-x-full"
