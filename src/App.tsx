@@ -17,6 +17,7 @@ import AuthLayout from "./components/AuthLayout"
 import EditPost from './pages/EditPost';
 import Post from './pages/Post';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
  
  
 function App() {
@@ -24,7 +25,7 @@ function App() {
     <div className='px-4 sm:px-[5vw] md:px-[7vw] lg-px[9vw]'> 
       <ToastContainer/>
       <Routes>
-        {/* Public routes */}
+         
         <Route path='/' element={<Home/>} />
         <Route path='/about' element={<AboutUs/>} />
         <Route path='/contact' element={<Contact/>} />
@@ -40,7 +41,7 @@ function App() {
           <AuthLayout authentication={false}><ResetPassword/></AuthLayout>
         } />
 
-        {/* Protected routes - require authentication */}
+         
         <Route path='/add-post' element={
           <AuthLayout authentication>{<AddPost/>}</AuthLayout>
         } />
@@ -60,7 +61,7 @@ function App() {
           <AuthLayout authentication>{<Onboarding/>}</AuthLayout>
         } />
 
-        {/* 404 catch-all route */}
+         
         <Route path='*' element={<NotFound />} />
       </Routes>
     </div>
@@ -69,13 +70,19 @@ function App() {
 
  
 function NotFound() {
+  useEffect(()=>{
+    document.body.style.overflow="hidden"
+    return () => (
+      document.body.style.overflow ="auto"
+    )
+  },[])
   return (
-    <div className="w-screen aboslute top-0 left-0 h-screen flex items-center justify-center">
-      <div className="text-center">
+    <div className="w-screen  aboslute top-0 left-0 h-screen  flex items-center justify-center">
+      <div className="text-center ">
         <h1 className="text-4xl font-bold mb-4">404 - Page Not Found</h1>
         <p className="mb-4">The page you're looking for doesn't exist.</p>
         <Link to="/" className="text-blue-500 hover:text-blue-600">
-          Go back home
+          <button className='hover:cursor-pointer bg-white text-black border border-2xl px-2 py-2'>Go back home</button> 
         </Link>
       </div>
     </div>
