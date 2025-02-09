@@ -85,7 +85,7 @@ REACT_APP_APPWRITE_PROJECT_ID=[Your Appwrite Project ID]
 ## Project Structure
 
 ```
-[your-repo-name]/
+Quill/
 ├── src/
 │   ├── components/       # Reusable React components (.tsx)
 │   │   ├── Post.tsx
@@ -118,3 +118,6 @@ REACT_APP_APPWRITE_PROJECT_ID=[Your Appwrite Project ID]
     * **Storage:** Configure storage for uploading and serving images.
     * **Authentication:** Enable and configure the authentication methods you want to use (e.g., email/password).
 3. **Obtain your Appwrite endpoint and project ID.**
+
+
+#Note :- Some more features may be added later on .. 
