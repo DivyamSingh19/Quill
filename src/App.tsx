@@ -16,38 +16,70 @@ import Onboarding from './pages/Onboarding';
 import AuthLayout from "./components/AuthLayout"
 import EditPost from './pages/EditPost';
 import Post from './pages/Post';
- 
+import { Link } from 'react-router-dom';
  
  
 function App() {
-    
-
   return (
     <div className='px-4 sm:px-[5vw] md:px-[7vw] lg-px[9vw]'> 
-    
-    <div  >
-       
       <ToastContainer/>
-        <Routes>
-          <Route path='/' element={<Home/>}></Route>
-          <Route path='/about' element={<AboutUs/>}></Route>
-          <Route path='/contact' element={<Contact/>}></Route>
-          <Route path='/login' element={<AuthLayout authentication ={false}> <Login/></AuthLayout>}></Route>
-          <Route path='/signup' element={<AuthLayout authentication ={false}> <Signup/></AuthLayout>}></Route>
-          <Route path='/add-post' element={<AuthLayout authentication> <AddPost/></AuthLayout>}></Route>
-          <Route path='/edit-post/:slug' element={<AuthLayout authentication> <EditPost/></AuthLayout>}></Route>
-          <Route path='/post/:slug' element={<AuthLayout authentication> <Post/></AuthLayout>}></Route>
-          <Route path='/all-posts' element={<AuthLayout authentication> <Allposts/></AuthLayout>}></Route>
-          <Route path='/reset-password' element={<ResetPassword/>}></Route>
-          <Route path='/profile' element={<Profile/>}></Route>
-          <Route path='/onboarding' element={<Onboarding/>}></Route>
-           
-        </Routes>
-         
-    </div>
-    
+      <Routes>
+        {/* Public routes */}
+        <Route path='/' element={<Home/>} />
+        <Route path='/about' element={<AboutUs/>} />
+        <Route path='/contact' element={<Contact/>} />
+        
+        {/* Auth routes - redirect if already logged in */}
+        <Route path='/login' element={
+          <AuthLayout authentication={false}><Login/></AuthLayout>
+        } />
+        <Route path='/signup' element={
+          <AuthLayout authentication={false}><Signup/></AuthLayout>
+        } />
+        <Route path='/reset-password' element={
+          <AuthLayout authentication={false}><ResetPassword/></AuthLayout>
+        } />
+
+        {/* Protected routes - require authentication */}
+        <Route path='/add-post' element={
+          <AuthLayout authentication>{<AddPost/>}</AuthLayout>
+        } />
+        <Route path='/edit-post/:slug' element={
+          <AuthLayout authentication>{<EditPost/>}</AuthLayout>
+        } />
+        <Route path='/post/:slug' element={
+          <AuthLayout authentication>{<Post/>}</AuthLayout>
+        } />
+        <Route path='/all-posts' element={
+          <AuthLayout authentication>{<Allposts/>}</AuthLayout>
+        } />
+        <Route path='/profile' element={
+          <AuthLayout authentication>{<Profile/>}</AuthLayout>
+        } />
+        <Route path='/onboarding' element={
+          <AuthLayout authentication>{<Onboarding/>}</AuthLayout>
+        } />
+
+        {/* 404 catch-all route */}
+        <Route path='*' element={<NotFound />} />
+      </Routes>
     </div>
   )
+}
+
+ 
+function NotFound() {
+  return (
+    <div className="w-screen aboslute top-0 left-0 h-screen flex items-center justify-center">
+      <div className="text-center">
+        <h1 className="text-4xl font-bold mb-4">404 - Page Not Found</h1>
+        <p className="mb-4">The page you're looking for doesn't exist.</p>
+        <Link to="/" className="text-blue-500 hover:text-blue-600">
+          Go back home
+        </Link>
+      </div>
+    </div>
+  );
 }
 
 export default App
