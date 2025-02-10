@@ -11,10 +11,17 @@ const Logoutbutton = () => {
     }
   return (
     <button 
-    className='inline-block px-6 py-2 bg-gradient-to-t from-green-500 to-white rounded-full'
+  
     onClick={logoutHandler}
     
     >
+      <div className="flex items-center justify-center rounded-2xl cursor-pointer pt-2 px-2 py-2">
+  <div className="relative rounded-2xl   bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500 p-1">
+    <div className="w-full flex relative items-center justify-center bg-black back pt-2 px-2 py-2 rounded-lg">
+      <h1 className="text-sm  font-medium text-white">Logout</h1>
+    </div>
+  </div>
+</div>
       
     </button>
   )
