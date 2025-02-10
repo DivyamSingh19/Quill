@@ -15,10 +15,12 @@ const GridSection = ({ title, children, className = "" }) => {
   );
 };
 
-const Card = ({ className = "" }) => {
+const Card = ({ className , image}:{image:string; className?:string}) => {
   return (
     <CardGradient>
-      <div className={`bg-black rounded-3xl ${className}`}></div>
+      <div className={`bg-black rounded-3xl cursor-pointer ${className}`}>
+        <img src={image} alt="Card Image" className="w-full h-full object-cover rounded-2xl"/>
+      </div>
     </CardGradient>
   );
 };
@@ -33,11 +35,11 @@ const Card = ({ className = "" }) => {
             <div className="grid grid-cols-2 sm:grid-cols-2 gap-4 h-auto md:h-[400px]">
               <div className="grid gap-4">
                 <Card className="w-full h-[300px]" image={assets.theme1}/>
-                <Card className="w-full h-[150px]" image={assets.theme1}/>
+                <Card className="w-full h-[150px]" image={assets.science}/>
               </div>
               <div className="grid gap-4">
-                <Card  className="w-full flex-1 h-[150px]" image={assets.theme1} />
-                <Card className="w-full h-[300px]" image={assets.theme1}/>
+                <Card  className="w-full flex-1 h-[150px]" image={assets.pd} />
+                <Card className="w-full h-[300px]" image={assets.business}/>
               </div>
             </div>
           </GridSection>
