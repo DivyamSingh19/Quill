@@ -55,7 +55,7 @@ const Navbar = () => {
 
       <div className="flex items-center gap-4 md:gap-6">
         <ExpandingSearch />
-        <UserCircle className="w-6 h-6 cursor-pointer text-white hover:text-white" />
+        {/* <UserCircle className="w-6 h-6 cursor-pointer text-white hover:text-white" />  will be looked at later on */}
         <Menu
           onClick={() => setVisible(true)}
           className="w-6 h-6 cursor-pointer text-white hover:text-white md:hidden"
