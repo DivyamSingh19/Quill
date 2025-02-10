@@ -18,7 +18,7 @@ This project is a React-based blog application built with TypeScript, leveraging
 
 ## Introduction
 
-Quikk demonstrates how to build a full-stack web application using React with TypeScript for type safety and Appwrite as a backend-as-a-service (BaaS). Appwrite simplifies backend development by providing pre-built services for authentication, database, storage, functions, and more. This project focuses on showcasing core blog functionalities, including creating, reading, updating, and deleting posts, along with user authentication.
+Quill demonstrates how to build a full-stack web application using React with TypeScript for type safety and Appwrite as a backend-as-a-service (BaaS). Appwrite simplifies backend development by providing pre-built services for authentication, database, storage, functions, and more. This project focuses on showcasing core blog functionalities, including creating, reading, updating, and deleting posts, along with user authentication.
 
 ## Features
 
