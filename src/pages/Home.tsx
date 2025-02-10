@@ -41,7 +41,7 @@ const Home = () => {
           
           <Hero />
           <GridLayout/>
-           <Logoutbutton/>
+           
           
           <NewsletterBox/>
            <F2/>
