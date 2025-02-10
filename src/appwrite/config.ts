@@ -1,6 +1,17 @@
+import { toast } from 'react-toastify';
 import conf from '../conf/conf.js';
 import { Client, ID, Databases, Storage, Query } from "appwrite";
 
+enum TestingEnum {
+    OPTION_ONE = "Science",
+    OPTION_TWO = "Nature",
+    OPTION_THREE = "History",
+    OPTION_FOUR = "ComputerScience",
+    OPTION_FIVE = "Art",
+    OPTION_SIX = "Personal-Development",
+    OPTION_SEVEN = "Social-Issues",
+    OPTION_EIGHT="Business&Finance"
+}
 interface Blog {
     title:string,
     slug : string,
@@ -8,7 +19,8 @@ interface Blog {
     featuredImage : string,
     status : boolean,
     userId : string,
-    theme: string
+    theme: string,
+    testing: TestingEnum
 }
 export class Service{
     client = new Client();
@@ -23,7 +35,7 @@ export class Service{
         this.bucket = new Storage(this.client);
     }
 
-    async createPost({title, slug, content, featuredImage, status, userId,theme}:Blog){
+    async createPost({title, slug, content, featuredImage, status, userId,theme,testing}:Blog){
         try {
             return await this.databases.createDocument(
                 conf.appwriteDatabaseId,
@@ -36,6 +48,7 @@ export class Service{
                     status,
                     userId,
                     theme,
+                    testing
                 }
             )
         } catch (error) {
@@ -110,11 +123,14 @@ export class Service{
 
     async uploadFile(file: File){
         try {
-            return await this.bucket.createFile(
+            const upload = await this.bucket.createFile(
                 conf.appwriteBucketId,
                 ID.unique(),
                 file
+                
             )
+            toast.success("Upload SuccessFul")
+            return upload
         } catch (error) {
             console.log("Appwrite serive :: uploadFile :: error", error);
             return false
