@@ -7,7 +7,8 @@ interface Blog {
     content : string,
     featuredImage : string,
     status : boolean,
-    userId : string
+    userId : string,
+    theme: string
 }
 export class Service{
     client = new Client();
@@ -22,7 +23,7 @@ export class Service{
         this.bucket = new Storage(this.client);
     }
 
-    async createPost({title, slug, content, featuredImage, status, userId}:Blog){
+    async createPost({title, slug, content, featuredImage, status, userId,theme}:Blog){
         try {
             return await this.databases.createDocument(
                 conf.appwriteDatabaseId,
@@ -34,6 +35,7 @@ export class Service{
                     featuredImage,
                     status,
                     userId,
+                    theme,
                 }
             )
         } catch (error) {
@@ -104,7 +106,7 @@ export class Service{
         }
     }
 
-    // file upload service
+     
 
     async uploadFile(file: File){
         try {
