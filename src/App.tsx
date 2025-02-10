@@ -53,12 +53,12 @@ function App() {
         <Route path='/all-posts' element={
           <AuthLayout authentication>{<Allposts/>}</AuthLayout>
         } />
-        <Route path='/profile' element={
+        {/* <Route path='/profile' element={ //will be looked at later on
           <AuthLayout authentication>{<Profile/>}</AuthLayout>
         } />
         <Route path='/onboarding' element={
           <AuthLayout authentication>{<Onboarding/>}</AuthLayout>
-        } />
+        } /> */}
 
          
         <Route path='*' element={<NotFound />} />
