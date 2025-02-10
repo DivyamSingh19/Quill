@@ -31,40 +31,37 @@ const Navbar = () => {
       {/* Hide gradient effect on small screens */}
       <div className="hidden md:block">
         <CardGradient>
-          <ul className="hidden md:flex gap-5 text-white bg-black border pt-5 px-5 py-5 pb-5 rounded-2xl">
-            {navItems.map((item) =>
-              item.active ? (
-                <li key={item.name}>
-                  <button
-                    onClick={() => navigate(item.slug)}
-                    className="inline-block px-6 py-2 duration-200 hover:bg-white hover:text-black rounded-full cursor-pointer"
-                  >
-                    {item.name}
-                  </button>
-                </li>
-              ) : null
+          <div className="hidden md:flex gap-5 text-white bg-black border pt-5 px-5 py-5 pb-5 rounded-2xl items-center">
+            <ul className="flex gap-5">
+              {navItems.map((item) =>
+                item.active ? (
+                  <li key={item.name}>
+                    <button
+                      onClick={() => navigate(item.slug)}
+                      className="inline-block px-6 py-2 duration-200 hover:bg-white hover:text-black rounded-full cursor-pointer"
+                    >
+                      {item.name}
+                    </button>
+                  </li>
+                ) : null
+              )}
+            </ul>
+            {authStatus && (
+              <Logoutbutton className="inline-block px-6 py-2 duration-200 hover:bg-white hover:text-black rounded-full cursor-pointer ml-4" />
             )}
-            {/* {authStatus && (
-              <li>
-                <Logoutbutton />
-              </li>
-            )} */}
-          </ul>
+          </div>
         </CardGradient>
       </div>
 
       <div className="flex items-center gap-4 md:gap-6">
         <ExpandingSearch />
-        <UserCircle className="w-6 h-6 cursor-pointer text-white hover:text-white " />
-
-         
+        <UserCircle className="w-6 h-6 cursor-pointer text-white hover:text-white" />
         <Menu
           onClick={() => setVisible(true)}
           className="w-6 h-6 cursor-pointer text-white hover:text-white md:hidden"
         />
       </div>
 
-       
       <div
         className={`fixed top-0 right-0 h-screen w-full bg-white transition-transform transform ${
           visible ? "translate-x-0" : "translate-x-full"
@@ -79,20 +76,26 @@ const Navbar = () => {
             <p>Back</p>
           </div>
 
-          {/* Scrollable Links */}
-          <div className="overflow-y-auto flex flex-col h-full">
-            {navItems.map(
-              (item) =>
-                item.active && (
-                  <NavLink
-                    key={item.name}
-                    onClick={() => setVisible(false)}
-                    className="py-4 pl-6 border"
-                    to={item.slug}
-                  >
-                    {item.name}
-                  </NavLink>
-                )
+          <div className="flex flex-col justify-between h-full">
+            <div className="overflow-y-auto">
+              {navItems.map(
+                (item) =>
+                  item.active && (
+                    <NavLink
+                      key={item.name}
+                      onClick={() => setVisible(false)}
+                      className="py-4 pl-6 border block"
+                      to={item.slug}
+                    >
+                      {item.name}
+                    </NavLink>
+                  )
+              )}
+            </div>
+            {authStatus && (
+              <div className="mt-auto border-t">
+                <Logoutbutton />
+              </div>
             )}
           </div>
         </div>
