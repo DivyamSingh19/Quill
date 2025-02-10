@@ -114,12 +114,7 @@ const Signup = () => {
                     Remember me{" "}
                   </span>
                 </label>
-                <a
-                  href="/reset-password"
-                  className="text-sm text-emerald-500 hover:text-emerald-400"
-                >
-                  Forgot Password?
-                </a>
+                
               </div>
 
               <button
@@ -142,13 +137,7 @@ const Signup = () => {
                 <FcGoogle size={20} />
                 Signup with Google
               </button>
-              <button
-                type="button"
-                className="w-full border border-gray-800 text-white rounded p-3 hover:bg-gray-900 transition-colors flex items-center justify-center gap-6"
-              >
-                <FaGithub size={20} />
-                Signup with Github
-              </button>
+              
             </form>
 
             <p className="mt-6 text-center text-sm text-gray-400">
