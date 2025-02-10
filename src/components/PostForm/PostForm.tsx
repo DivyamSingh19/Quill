@@ -1,6 +1,5 @@
 import React, { useCallback } from "react";
 import { useForm } from "react-hook-form";
-import Button from "../Button";
 import Input from "../Input";
 import RTE from "../RTE";
 import Select from "../Select";
@@ -15,70 +14,74 @@ export default function PostForm({ post }) {
             slug: post?.$id || "",
             content: post?.content || "",
             status: post?.status || "active",
-            theme: post?.theme || "" // Set a default theme
+            theme: post?.theme || ""
         },
     });
 
     const navigate = useNavigate();
     const userData = useSelector((state) => state.auth.userData);
 
-    const submit = async (data) => {
+    const submit = async (data, e) => {
+        e.preventDefault(); // Prevent form from submitting normally
+        
         try {
-            if (post) {
-                let featuredImage = post.featuredImage;
+            if (!userData?.$id) {
+                throw new Error("Please login to create/edit posts");
+            }
 
-                if (data.image?.[0]) {
+            let uploadedFile = null;
+            if (data.image?.[0]) {
+                try {
+                    uploadedFile = await appwriteService.uploadFile(data.image[0]);
+                    if (!uploadedFile?.$id) {
+                        throw new Error("File upload failed");
+                    }
+                } catch (error) {
+                    console.error("File upload error:", error);
+                    throw new Error("Failed to upload image");
+                }
+            }
+
+            if (post) {
+                const updateData = {
+                    ...data,
+                    featuredImage: uploadedFile ? uploadedFile.$id : post.featuredImage
+                };
+
+                if (uploadedFile && post.featuredImage) {
                     try {
-                        const file = await appwriteService.uploadFile(data.image[0]);
-                        if (file?.$id) {
-                            if (post.featuredImage) {
-                                await appwriteService.deleteFile(post.featuredImage);
-                            }
-                            featuredImage = file.$id;
-                        }
-                    } catch (uploadError) {
-                        console.error("Error uploading file:", uploadError);
-                        throw new Error("Failed to upload image");
+                        await appwriteService.deleteFile(post.featuredImage);
+                    } catch (error) {
+                        console.error("Error deleting old file:", error);
                     }
                 }
 
-                const dbPost = await appwriteService.updatePost(post.$id, {
-                    ...data,
-                    featuredImage,
-                });
-
+                const dbPost = await appwriteService.updatePost(post.$id, updateData);
                 if (dbPost) {
                     navigate(`/post/${dbPost.$id}`);
                 }
             } else {
-                if (!data.image?.[0]) {
+                if (!uploadedFile) {
                     throw new Error("Featured image is required for new posts");
                 }
 
-                try {
-                    const file = await appwriteService.uploadFile(data.image[0]);
-                    if (!file?.$id) {
-                        throw new Error("Failed to upload image");
-                    }
+                const postData = {
+                    ...data,
+                    featuredImage: uploadedFile.$id,
+                    userId: userData.$id
+                };
 
-                    const dbPost = await appwriteService.createPost({ 
-                        ...data, 
-                        featuredImage: file.$id,
-                        userId: userData.$id 
-                    });
-
-                    if (dbPost) {
-                        navigate(`/post/${dbPost.$id}`);
-                    }
-                } catch (uploadError) {
-                    console.error("Error uploading file:", uploadError);
-                    throw new Error("Failed to upload image");
+                const dbPost = await appwriteService.createPost(postData);
+                if (dbPost) {
+                    navigate(`/post/${dbPost.$id}`);
                 }
             }
         } catch (error) {
             console.error("Error submitting post:", error);
-            // Here you might want to show an error message to the user
             alert(error.message || "Error submitting post");
+            if (error.message.includes("login")) {
+                navigate("/login");
+            }
         }
     };
 
@@ -94,6 +97,11 @@ export default function PostForm({ post }) {
     }, []);
 
     React.useEffect(() => {
+        if (!userData?.$id) {
+            navigate("/login");
+            return;
+        }
+
         const subscription = watch((value, { name }) => {
             if (name === "title") {
                 setValue("slug", slugTransform(value.title), { shouldValidate: true });
@@ -101,11 +109,15 @@ export default function PostForm({ post }) {
         });
 
         return () => subscription.unsubscribe();
-    }, [watch, slugTransform, setValue]);
+    }, [watch, slugTransform, setValue, userData, navigate]);
+
+    if (!userData?.$id) {
+        return null;
+    }
 
     return (
         <div className="w-full max-w-7xl mx-auto px-4">
-            <form onSubmit={handleSubmit(submit)} className="flex flex-col md:flex-row gap-4">
+            <form onSubmit={handleSubmit((data, e) => submit(data, e))} className="flex flex-col md:flex-row gap-4">
                 <div className="w-full md:w-2/3">
                     <Input
                         label="Title :"
@@ -162,8 +174,9 @@ export default function PostForm({ post }) {
                     />
                     <button 
                         type="submit" 
-                        bgColor={post ? "bg-green-500" : undefined} 
-                        className="w-full"
+                        className={`w-full px-4 py-2 rounded-lg ${
+                            post ? 'bg-green-500' : 'bg-blue-500'
+                        } text-white hover:bg-opacity-90`}
                     >
                         {post ? "Update" : "Submit"}
                     </button>
